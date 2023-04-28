@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
-    public float movementSpeed = 3.0f;
+    public float movementSpeed = 6.0f;
+    public float jumpForce = 16.0f;
     Vector2 movement = new Vector2();
 
     Animator animator;
@@ -44,12 +45,28 @@ public class MovementController : MonoBehaviour
 
     void MoveCharacter()
     {
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y =  Input.GetAxisRaw("Vertical");
 
-        movement.Normalize();
+        rb2D.velocity = new Vector2(movementSpeed * Input.GetAxis("Horizontal"), rb2D.velocity.y);
 
-        rb2D.velocity = movement * movementSpeed;
+        if (Input.GetButtonDown("Jump"))
+        {
+            rb2D.velocity = new Vector2(rb2D.velocity.x, jumpForce);
+        }
+        movement.x = rb2D.velocity.x;
+        movement.y = rb2D.velocity.y;
+        // movement.x = Input.GetAxisRaw("Horizontal");
+        // movement.y = rb2D.velocity.y;
+        // movement.Normalize();
+        // rb2D.velocity = movement * movementSpeed;
+
+        // if(Input.GetButtonDown("Jump"))
+        // {
+        //     movement.x = rb2D.velocity.x;
+        //     movement.Normalize();
+        //     movement.y = jumpForce;
+        //     rb2D.velocity = movement * movementSpeed;
+        // }
+
     }
 
     void UpdateState()

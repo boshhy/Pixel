@@ -130,7 +130,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05dea0379fd54aa4bb4ab56b8fee158d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 3
+  movementSpeed: 6
+  jumpForce: 16
 --- !u!70 &454739972
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -830,7 +831,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.05}
-  m_Size: {x: 0.84, y: 0.76}
+  m_Size: {x: 0.66, y: 0.75}
   m_Direction: 0
 --- !u!1001 &1181687939
 PrefabInstance:
@@ -852,7 +853,7 @@ PrefabInstance:
     - target: {fileID: 1087830095277079322, guid: 36f46d7483c1c94408dda7138d7c67b5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.56
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 1087830095277079322, guid: 36f46d7483c1c94408dda7138d7c67b5,
         type: 3}
@@ -937,7 +938,7 @@ PrefabInstance:
     - target: {fileID: 1087830095277079327, guid: 36f46d7483c1c94408dda7138d7c67b5,
         type: 3}
       propertyPath: m_GravityScale
-      value: 12
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1087830095277079327, guid: 36f46d7483c1c94408dda7138d7c67b5,
         type: 3}
@@ -3817,7 +3818,7 @@ PrefabInstance:
     - target: {fileID: 713574033369081339, guid: 4e6dfb43269de2547b139aebd1571ff0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.0128878355
+      value: -0.07
       objectReference: {fileID: 0}
     - target: {fileID: 713574033369081339, guid: 4e6dfb43269de2547b139aebd1571ff0,
         type: 3}
