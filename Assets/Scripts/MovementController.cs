@@ -8,6 +8,11 @@ public class MovementController : MonoBehaviour
     public float jumpForce = 16.0f;
     Vector2 movement = new Vector2();
 
+    private bool isGrounded;
+    private bool canDoubleJump;
+    public Transform groundCheckPoint;
+    public LayerMask whatIsGround;
+
     Animator animator;
 
     string animationState = "AnimationState";
@@ -48,9 +53,27 @@ public class MovementController : MonoBehaviour
 
         rb2D.velocity = new Vector2(movementSpeed * Input.GetAxis("Horizontal"), rb2D.velocity.y);
 
+        isGrounded = Physics2D.OverlapCircle(groundCheckPoint.position, 0.2f, whatIsGround);
+
+        if (isGrounded)
+        {
+            canDoubleJump = true;
+        }
+        
         if (Input.GetButtonDown("Jump"))
         {
-            rb2D.velocity = new Vector2(rb2D.velocity.x, jumpForce);
+            if(isGrounded)
+            {
+                rb2D.velocity = new Vector2(rb2D.velocity.x, jumpForce);
+            }
+            else
+            {
+                if(canDoubleJump)
+                {
+                    rb2D.velocity = new Vector2(rb2D.velocity.x, jumpForce);
+                    canDoubleJump = false;
+                }
+            }
         }
         movement.x = rb2D.velocity.x;
         movement.y = rb2D.velocity.y;

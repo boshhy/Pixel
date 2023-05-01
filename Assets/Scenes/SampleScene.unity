@@ -112,9 +112,45 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &171797273
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 171797274}
+  m_Layer: 8
+  m_Name: groundPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &171797274
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171797273}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 454739970}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &454739965 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1087830095277079320, guid: 36f46d7483c1c94408dda7138d7c67b5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1181687939}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &454739970 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1087830095277079322, guid: 36f46d7483c1c94408dda7138d7c67b5,
     type: 3}
   m_PrefabInstance: {fileID: 1181687939}
   m_PrefabAsset: {fileID: 0}
@@ -132,6 +168,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 6
   jumpForce: 16
+  groundCheckPoint: {fileID: 171797274}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!70 &454739972
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -141,7 +181,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 454739965}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 99dc51d153d27ad4a8230e3a6011196a, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -200,7 +240,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -244,7 +284,7 @@ GameObject:
   - component: {fileID: 554243403}
   - component: {fileID: 554243405}
   - component: {fileID: 554243404}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -948,6 +988,11 @@ PrefabInstance:
     - target: {fileID: 1087830095277079327, guid: 36f46d7483c1c94408dda7138d7c67b5,
         type: 3}
       propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1087830095277079327, guid: 36f46d7483c1c94408dda7138d7c67b5,
+        type: 3}
+      propertyPath: m_CollisionDetection
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
