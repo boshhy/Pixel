@@ -14,19 +14,20 @@ public class MovementController : MonoBehaviour
     public LayerMask whatIsGround;
 
     Animator animator;
+    private SpriteRenderer spriteRenderer;
 
     string animationState = "AnimationState";
     Rigidbody2D rb2D;
 
     enum CharStates
     {
-        walkEast = 1,
-        walkSouth = 2,
-        walkWest = 3,
-        walkNorth = 4,
+        run = 1,
+        jump = 2,
+        falling = 3,
+        doubleJump = 4,
 
-        idleEast = 5,
-        idleWest = 6
+        idle = 5,
+        wallJump = 6
     }
 
     // Start is called before the first frame update
@@ -34,13 +35,13 @@ public class MovementController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rb2D = GetComponent<Rigidbody2D>();    
+        spriteRenderer  = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
         UpdateState();
-        
     }
 
     void FixedUpdate()
@@ -75,40 +76,42 @@ public class MovementController : MonoBehaviour
                 }
             }
         }
+        if(rb2D.velocity.x < 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if(rb2D.velocity.x > 0)
+        {
+            spriteRenderer.flipX = false;
+        }
+
         movement.x = rb2D.velocity.x;
         movement.y = rb2D.velocity.y;
-        // movement.x = Input.GetAxisRaw("Horizontal");
-        // movement.y = rb2D.velocity.y;
-        // movement.Normalize();
-        // rb2D.velocity = movement * movementSpeed;
-
-        // if(Input.GetButtonDown("Jump"))
-        // {
-        //     movement.x = rb2D.velocity.x;
-        //     movement.Normalize();
-        //     movement.y = jumpForce;
-        //     rb2D.velocity = movement * movementSpeed;
-        // }
 
     }
 
     void UpdateState()
     {
 
-        if (movement.x > 0)
+        if(!canDoubleJump)
         {
-            this.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f));
-            animator.SetInteger(animationState, (int)CharStates.walkEast);
+            animator.SetInteger(animationState, (int)CharStates.doubleJump);
         }
-        else if (movement.x < 0)
+        else if (Mathf.Abs(movement.x) >= 0 && movement.y > 0.05)
         {
-            this.transform.rotation = Quaternion.Euler(new Vector3(0f, 180f, 0f));
-            animator.SetInteger(animationState, (int)CharStates.walkEast);
+            animator.SetInteger(animationState, (int)CharStates.jump);
+        }
+        else if (Mathf.Abs(movement.x) >= 0 && movement.y < -0.05)
+        {
+            animator.SetInteger(animationState, (int)CharStates.falling);
+        }
+        else if (Mathf.Abs(movement.x) > 0)
+        {
+            animator.SetInteger(animationState, (int)CharStates.run);
         }
         else
         {
-            animator.SetInteger(animationState, (int)CharStates.idleEast);
+            animator.SetInteger(animationState, (int)CharStates.idle);
         }
     }
-
 }
