@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MovementController : MonoBehaviour
 {
+    public static MovementController instance;
+
     public float movementSpeed = 6.0f;
     public float jumpForce = 16.0f;
     Vector2 movement = new Vector2();
@@ -16,6 +18,9 @@ public class MovementController : MonoBehaviour
     Animator animator;
     private SpriteRenderer spriteRenderer;
 
+    public float knockBackLength, knockBackForce;
+    private float knockBackCounter;
+
     string animationState = "AnimationState";
     Rigidbody2D rb2D;
 
@@ -27,7 +32,13 @@ public class MovementController : MonoBehaviour
         doubleJump = 4,
 
         idle = 5,
-        wallJump = 6
+        wallJump = 6,
+        hit = 7
+    }
+
+    private void Awake() 
+    {
+        instance = this;
     }
 
     // Start is called before the first frame update
@@ -41,18 +52,35 @@ public class MovementController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (knockBackCounter <= 0)
+        {
+            MoveCharacter();
+        }
+        else
+        {
+            knockBackCounter -= Time.deltaTime;
+            if (!spriteRenderer.flipX)
+            {
+                rb2D.velocity = new Vector2(-knockBackForce, rb2D.velocity.y);
+            }
+            else
+            {
+                rb2D.velocity = new Vector2(knockBackForce, rb2D.velocity.y);
+            }
+        }
         UpdateState();
+        
     }
 
     void FixedUpdate()
     {
-        MoveCharacter();
+        // MoveCharacter();
     }
 
     void MoveCharacter()
     {
 
-        rb2D.velocity = new Vector2(movementSpeed * Input.GetAxis("Horizontal"), rb2D.velocity.y);
+        rb2D.velocity = new Vector2(movementSpeed * Input.GetAxisRaw("Horizontal"), rb2D.velocity.y);
 
         isGrounded = Physics2D.OverlapCircle(groundCheckPoint.position, 0.2f, whatIsGround);
 
@@ -92,26 +120,36 @@ public class MovementController : MonoBehaviour
 
     void UpdateState()
     {
+        if (knockBackCounter <= 0)
+        {
+            if(!canDoubleJump)
+            {
+                animator.SetInteger(animationState, (int)CharStates.doubleJump);
+            }
+            else if (Mathf.Abs(movement.x) >= 0 && movement.y > 0.05)
+            {
+                animator.SetInteger(animationState, (int)CharStates.jump);
+            }
+            else if (Mathf.Abs(movement.x) >= 0 && movement.y < -0.05)
+            {
+                animator.SetInteger(animationState, (int)CharStates.falling);
+            }
+            else if (Mathf.Abs(movement.x) > 0)
+            {
+                animator.SetInteger(animationState, (int)CharStates.run);
+            }
+            else
+            {
+                animator.SetInteger(animationState, (int)CharStates.idle);
+            }
+        }
+    }
 
-        if(!canDoubleJump)
-        {
-            animator.SetInteger(animationState, (int)CharStates.doubleJump);
-        }
-        else if (Mathf.Abs(movement.x) >= 0 && movement.y > 0.05)
-        {
-            animator.SetInteger(animationState, (int)CharStates.jump);
-        }
-        else if (Mathf.Abs(movement.x) >= 0 && movement.y < -0.05)
-        {
-            animator.SetInteger(animationState, (int)CharStates.falling);
-        }
-        else if (Mathf.Abs(movement.x) > 0)
-        {
-            animator.SetInteger(animationState, (int)CharStates.run);
-        }
-        else
-        {
-            animator.SetInteger(animationState, (int)CharStates.idle);
-        }
+    public void KnockBack()
+    {
+        rb2D.velocity = new Vector2(0f, knockBackForce);
+        knockBackCounter = knockBackLength;
+
+        animator.SetInteger(animationState, (int)CharStates.hit);
     }
 }

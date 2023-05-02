@@ -16,7 +16,7 @@ TagManager:
   - 
   - Blocking
   - Ground
-  - 
+  - objects
   - 
   - 
   - 
@@ -47,6 +47,9 @@ TagManager:
     locked: 0
   - name: Terrain
     uniqueID: 995207207
+    locked: 0
+  - name: objects
+    uniqueID: 3205620417
     locked: 0
   - name: Characters
     uniqueID: 1005438197
