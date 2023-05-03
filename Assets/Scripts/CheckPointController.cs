@@ -8,6 +8,8 @@ public class CheckPointController : MonoBehaviour
 
     private checkPoint[] checkpoints;
 
+    public Vector3 spawnPoint;
+
     private void Awake()
     {
         instance = this;
@@ -16,6 +18,8 @@ public class CheckPointController : MonoBehaviour
     void Start()
     {
         checkpoints = FindObjectsOfType<checkPoint>();
+
+        spawnPoint = MovementController.instance.transform.position;
     }
 
     // Update is called once per frame
@@ -30,5 +34,10 @@ public class CheckPointController : MonoBehaviour
         {
             checkpoints[i].ResetCheckPoint();
         }
+    }
+
+    public void SetSpawnPoint(Vector3 newSpawnPoint)
+    {
+        spawnPoint = newSpawnPoint;
     }
 }

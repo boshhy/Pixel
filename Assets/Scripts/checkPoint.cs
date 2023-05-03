@@ -24,6 +24,8 @@ public class checkPoint : MonoBehaviour
             CheckPointController.instance.DeactivateCheckPoints();
 
             animator.SetBool("checkPointOn", true);
+
+            CheckPointController.instance.SetSpawnPoint(transform.position);
         }
     }
 
