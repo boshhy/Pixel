@@ -130,3 +130,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isStrawberry: 1
+  isHealth: 0
+  DestroyEffect: {fileID: 3781952553879119580, guid: 337a4d8fa6df51b4ca4431d25654af40,
+    type: 3}

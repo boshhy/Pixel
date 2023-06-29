@@ -12,6 +12,8 @@ public class PlayerHealthController : MonoBehaviour
     private float invincibleCounter;
     private SpriteRenderer spriteRenderer;
 
+    public GameObject killEffect;
+
     private void Awake()
     {
         instance = this;
@@ -47,6 +49,7 @@ public class PlayerHealthController : MonoBehaviour
             {
                 currentHealth = 0;
                 //gameObject.SetActive(false);
+                Instantiate(killEffect, transform.position, transform.rotation);
                 LevelManager.instance.RespawnPlayer();
             }
             else
@@ -59,5 +62,18 @@ public class PlayerHealthController : MonoBehaviour
             
             UIController.instance.UpdateHealthDisplay();
         }
+    }
+
+    public void Heal()
+    {
+        currentHealth++;
+
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+
+        UIController.instance.UpdateHealthDisplay();
+
     }
 }
