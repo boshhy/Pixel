@@ -43,6 +43,7 @@ public class PlayerHealthController : MonoBehaviour
     {
         if(invincibleCounter <= 0)
         {
+            AudioManager.instance.PlaySFX(3);
             currentHealth--;
 
             if (currentHealth <= 0)

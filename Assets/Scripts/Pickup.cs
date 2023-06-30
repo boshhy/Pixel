@@ -28,6 +28,7 @@ public class Pickup : MonoBehaviour
         {
             if (isStrawberry)
             {
+                AudioManager.instance.PlaySFX(7);
                 LevelManager.instance.strawberriesCollected++;
 
                 isCollected = true;
@@ -41,6 +42,7 @@ public class Pickup : MonoBehaviour
         {
             if(PlayerHealthController.instance.currentHealth < PlayerHealthController.instance.maxHealth)
             {
+                AudioManager.instance.PlaySFX(7);
                 PlayerHealthController.instance.Heal();
 
                 isCollected = true;

@@ -53,11 +53,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\AudioManager.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\checkPoint.cs" />
      <Compile Include="Assets\Scripts\CheckPointController.cs" />
      <Compile Include="Assets\Scripts\DamagePlayer.cs" />
      <Compile Include="Assets\Scripts\DestroyOverTime.cs" />
+     <Compile Include="Assets\Scripts\HitBox.cs" />
      <Compile Include="Assets\Scripts\KillPlayer.cs" />
      <Compile Include="Assets\Scripts\LevelManager.cs" />
      <Compile Include="Assets\Scripts\MovementController.cs" />

@@ -93,12 +93,14 @@ public class MovementController : MonoBehaviour
         {
             if(isGrounded)
             {
+                AudioManager.instance.PlaySFX(5);
                 rb2D.velocity = new Vector2(rb2D.velocity.x, jumpForce);
             }
             else
             {
                 if(canDoubleJump)
                 {
+                    AudioManager.instance.PlaySFX(5);
                     rb2D.velocity = new Vector2(rb2D.velocity.x, jumpForce);
                     canDoubleJump = false;
                 }
@@ -151,5 +153,22 @@ public class MovementController : MonoBehaviour
         knockBackCounter = knockBackLength;
 
         animator.SetInteger(animationState, (int)CharStates.hit);
+    }
+
+    public void killJump()
+    {
+        rb2D.velocity = new Vector2(rb2D.velocity.x, jumpForce);
+    }
+
+    public bool getCanDoubleJump()
+    {
+        return canDoubleJump;
+    }
+
+    public void resetDoubleJump()
+    {
+        AudioManager.instance.PlaySFX(5);
+        rb2D.velocity = new Vector2(rb2D.velocity.x, jumpForce);
+        canDoubleJump = true;
     }
 }

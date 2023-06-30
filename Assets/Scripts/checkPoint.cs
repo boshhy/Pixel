@@ -19,10 +19,11 @@ public class checkPoint : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Player")
+        if(other.tag == "Player" && CheckPointController.instance.isActive(transform.position) == false)
         {
             CheckPointController.instance.DeactivateCheckPoints();
 
+            AudioManager.instance.PlaySFX(1);
             animator.SetBool("checkPointOn", true);
 
             CheckPointController.instance.SetSpawnPoint(transform.position);

@@ -40,4 +40,9 @@ public class CheckPointController : MonoBehaviour
     {
         spawnPoint = newSpawnPoint;
     }
+
+    public bool isActive(Vector3 spawnToCheck)
+    {
+        return spawnPoint == spawnToCheck;
+    }
 }
