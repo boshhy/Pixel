@@ -6,6 +6,7 @@ TagManager:
   tags:
   - EnemyAngryPig
   - EnemyAngryRino
+  - ItemTrampoline
   layers:
   - Default
   - TransparentFX

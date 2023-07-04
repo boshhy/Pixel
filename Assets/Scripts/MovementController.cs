@@ -128,11 +128,11 @@ public class MovementController : MonoBehaviour
             {
                 animator.SetInteger(animationState, (int)CharStates.doubleJump);
             }
-            else if (Mathf.Abs(movement.x) >= 0 && movement.y > 0.05)
+            else if (Mathf.Abs(movement.x) >= 0 && movement.y > 0.05 && isGrounded == false)
             {
                 animator.SetInteger(animationState, (int)CharStates.jump);
             }
-            else if (Mathf.Abs(movement.x) >= 0 && movement.y < -0.05)
+            else if (Mathf.Abs(movement.x) >= 0 && movement.y < -0.05  && isGrounded == false)
             {
                 animator.SetInteger(animationState, (int)CharStates.falling);
             }
@@ -169,6 +169,13 @@ public class MovementController : MonoBehaviour
     {
         AudioManager.instance.PlaySFX(5);
         rb2D.velocity = new Vector2(rb2D.velocity.x, jumpForce);
+        canDoubleJump = true;
+    }
+    
+    public void trampolineJump()
+    {
+        AudioManager.instance.PlaySFX(5);
+        rb2D.velocity = new Vector2(rb2D.velocity.x, jumpForce * 1.5f);
         canDoubleJump = true;
     }
 }

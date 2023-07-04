@@ -42,7 +42,6 @@ public class RinoController : MonoBehaviour
     void Update()
     {   
         float distToPlayer = Vector2.Distance(transform.position , player.position);
-        Debug.Log("Distance is " + distToPlayer);
 
         if (distToPlayer <= agroRange)
         {
@@ -56,7 +55,7 @@ public class RinoController : MonoBehaviour
         }
     }
 
-    void attackPlayer()
+    public void attackPlayer()
     {   
         if (movingLeft)
         {

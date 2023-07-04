@@ -36,19 +36,19 @@ public class Pickup : MonoBehaviour
 
                 Instantiate(DestroyEffect, transform.position, transform.rotation);
             }
-        }
 
-        if (isHealth)
-        {
-            if(PlayerHealthController.instance.currentHealth < PlayerHealthController.instance.maxHealth)
+            if (isHealth)
             {
-                AudioManager.instance.PlaySFX(7);
-                PlayerHealthController.instance.Heal();
+                if(PlayerHealthController.instance.currentHealth < PlayerHealthController.instance.maxHealth)
+                {
+                    AudioManager.instance.PlaySFX(7);
+                    PlayerHealthController.instance.Heal();
 
-                isCollected = true;
-                Destroy(gameObject);
+                    isCollected = true;
+                    Destroy(gameObject);
 
-                Instantiate(DestroyEffect, transform.position, transform.rotation);
+                    Instantiate(DestroyEffect, transform.position, transform.rotation);
+                }
             }
         }
     }

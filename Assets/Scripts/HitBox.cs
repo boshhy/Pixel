@@ -33,5 +33,11 @@ public class HitBox : MonoBehaviour
             MovementController.instance.resetDoubleJump();
             AudioManager.instance.PlaySFX(6);
         }
+
+        if (other.tag == "ItemTrampoline")
+        {
+            
+            MovementController.instance.trampolineJump();
+        }
     }
 }

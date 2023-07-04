@@ -60,6 +60,7 @@
      <Compile Include="Assets\Scripts\DamagePlayer.cs" />
      <Compile Include="Assets\Scripts\DestroyOverTime.cs" />
      <Compile Include="Assets\Scripts\HitBox.cs" />
+     <Compile Include="Assets\Scripts\itemPlatform.cs" />
      <Compile Include="Assets\Scripts\KillPlayer.cs" />
      <Compile Include="Assets\Scripts\LevelManager.cs" />
      <Compile Include="Assets\Scripts\MovementController.cs" />
@@ -67,6 +68,8 @@
      <Compile Include="Assets\Scripts\PigController.cs" />
      <Compile Include="Assets\Scripts\PlayerHealthController.cs" />
      <Compile Include="Assets\Scripts\RinoController.cs" />
+     <Compile Include="Assets\Scripts\RinoHealthController.cs" />
+     <Compile Include="Assets\Scripts\Trampoline.cs" />
      <Compile Include="Assets\Scripts\UIController.cs" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>C:/Users/User/Visual Studio Code Projects/Pixel/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

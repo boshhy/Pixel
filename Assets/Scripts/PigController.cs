@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PigController : MonoBehaviour
 {
+    public int pigHealth;
     public float pigSpeed;
     public Transform pointA;
     public Transform pointB;
