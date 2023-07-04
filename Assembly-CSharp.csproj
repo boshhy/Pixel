@@ -66,6 +66,7 @@
      <Compile Include="Assets\Scripts\Pickup.cs" />
      <Compile Include="Assets\Scripts\PigController.cs" />
      <Compile Include="Assets\Scripts\PlayerHealthController.cs" />
+     <Compile Include="Assets\Scripts\RinoController.cs" />
      <Compile Include="Assets\Scripts\UIController.cs" />
  <Reference Include="Unity.TextMeshPro.Editor">
  <HintPath>C:/Users/User/Visual Studio Code Projects/Pixel/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

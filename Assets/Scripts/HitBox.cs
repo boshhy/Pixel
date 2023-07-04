@@ -19,14 +19,14 @@ public class HitBox : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "EnemyAngryPig" && MovementController.instance.getCanDoubleJump())
+        if ((other.tag == "EnemyAngryPig" || other.tag == "EnemyAngryRino") && MovementController.instance.getCanDoubleJump())
         {
             Destroy(other.transform.parent.gameObject);
             Instantiate(killEffect, other.transform.position, other.transform.rotation);
             MovementController.instance.killJump();
             AudioManager.instance.PlaySFX(6);
         }
-        else if (other.tag == "EnemyAngryPig" && MovementController.instance.getCanDoubleJump() == false)
+        else if ((other.tag == "EnemyAngryPig" || other.tag == "EnemyAngryRino") && MovementController.instance.getCanDoubleJump() == false)
         {
             Destroy(other.transform.parent.gameObject);
             Instantiate(killEffect, other.transform.position, other.transform.rotation);
