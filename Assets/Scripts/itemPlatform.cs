@@ -14,6 +14,8 @@ public class itemPlatform : MonoBehaviour
 
     private float currentMoveTime;
     private float currentWaitTime;
+    
+    private float startingPoint;
 
     public bool isMovingUp;
 
@@ -27,6 +29,7 @@ public class itemPlatform : MonoBehaviour
         anim = GetComponent<Animator>();
         sRenderer = GetComponent<SpriteRenderer>();
         rBody = GetComponent<Rigidbody2D>();
+        startingPoint = transform.position.y;
         currentMoveTime = maxMoveTime;
         isMoving = false;
         isMovingUp = true;
@@ -40,7 +43,6 @@ public class itemPlatform : MonoBehaviour
             if (isMovingUp)
             {
                 rBody.velocity = new Vector2(rBody.velocity.x, platformSpeed);
-                Debug.Log(transform.position.y + " and point is: " + pointUp.position.y);
                 if(transform.position.y > pointUp.position.y)
                 {
                     isMovingUp = false;
@@ -59,7 +61,22 @@ public class itemPlatform : MonoBehaviour
         }
         else
         {
-            rBody.velocity = new Vector2(0.0f, 0.0f);
+            if (startingPoint != transform.position.y)
+            {
+                if (transform.position.y < startingPoint)
+                {
+                    rBody.velocity = new Vector2(rBody.velocity.x, platformSpeed);
+                }
+                else if (transform.position.y > startingPoint)
+                {
+                    rBody.velocity = new Vector2(rBody.velocity.x, -platformSpeed);
+                }
+            }
+            else
+            {
+                rBody.velocity = new Vector2(0.0f, 0.0f);
+                isMovingUp = true;
+            }
         }
         
     }
@@ -68,8 +85,6 @@ public class itemPlatform : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Debug.Log("onPlatform");
-            anim.SetBool("isOn", true);
             isMoving = true;
         }
     }
@@ -78,7 +93,6 @@ public class itemPlatform : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Debug.Log("Platform Off");
             isMoving = false;
         }
     }

@@ -20,8 +20,14 @@ public class DamagePlayer : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            //Debug.Log("Hit the player");
-            //FindObjectOfType<PlayerHealthController>().DealDamage();
+            PlayerHealthController.instance.DealDamage();
+        }
+    }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+        {
             PlayerHealthController.instance.DealDamage();
         }
     }
