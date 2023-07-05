@@ -15,8 +15,17 @@ public class MovementController : MonoBehaviour
     public Transform groundCheckPoint;
     public LayerMask whatIsGround;
 
+    public Transform wallCheckPointRight;
+    public Transform wallCheckPointLeft;
+    public LayerMask whatIsWall;
+
     Animator animator;
     private SpriteRenderer spriteRenderer;
+
+    private bool isWallSliding;
+    private float wallSlidingSpeed = 2.0f;
+
+
 
     public float knockBackLength, knockBackForce;
     private float knockBackCounter;
@@ -55,6 +64,7 @@ public class MovementController : MonoBehaviour
         if (knockBackCounter <= 0)
         {
             MoveCharacter();
+            wallSlide();
         }
         else
         {
@@ -79,7 +89,6 @@ public class MovementController : MonoBehaviour
 
     void MoveCharacter()
     {
-
         rb2D.velocity = new Vector2(movementSpeed * Input.GetAxisRaw("Horizontal"), rb2D.velocity.y);
 
         isGrounded = Physics2D.OverlapCircle(groundCheckPoint.position, 0.2f, whatIsGround);
@@ -124,7 +133,11 @@ public class MovementController : MonoBehaviour
     {
         if (knockBackCounter <= 0)
         {
-            if(!canDoubleJump)
+            if (isWallSliding)
+            {
+                animator.SetInteger(animationState, (int)CharStates.wallJump);
+            }
+            else if (!canDoubleJump)
             {
                 animator.SetInteger(animationState, (int)CharStates.doubleJump);
             }
@@ -177,5 +190,23 @@ public class MovementController : MonoBehaviour
         AudioManager.instance.PlaySFX(5);
         rb2D.velocity = new Vector2(rb2D.velocity.x, jumpForce * 1.5f);
         canDoubleJump = true;
+    }
+
+    private bool isWalled()
+    {
+        return Physics2D.OverlapCircle(wallCheckPointLeft.position, 0.2f, whatIsWall) || Physics2D.OverlapCircle(wallCheckPointRight.position, 0.2f, whatIsWall);
+    }
+
+    private void wallSlide()
+    {
+        if(isWalled() && !isGrounded && rb2D.velocity.x != 0.0f)
+        {
+            Debug.Log("is wall sliding");
+            isWallSliding = true;
+            rb2D.velocity = new Vector2(rb2D.velocity.x, Mathf.Clamp(rb2D.velocity.y, -wallSlidingSpeed, float.MaxValue));
+        }
+        else{
+            isWallSliding = false;
+        }
     }
 }
