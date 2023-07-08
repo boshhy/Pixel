@@ -26,9 +26,16 @@ public class MovementController : MonoBehaviour
     private float wallSlidingSpeed = 2.0f;
 
 
+    private bool isWallJumping;
+    private float wallJumpingDirection;
+    public float wallJumpingTime = 0.2f;
+    public float wallJumpingCounter;
+    public float wallJumpingDuration = 0.2f;
+    public Vector2 wallJumpingPower = new Vector2(8.0f, 16.0f);
+
 
     public float knockBackLength, knockBackForce;
-    private float knockBackCounter;
+    private float knockBackCounter;//
 
     string animationState = "AnimationState";
     Rigidbody2D rb2D;
@@ -63,8 +70,11 @@ public class MovementController : MonoBehaviour
     {
         if (knockBackCounter <= 0)
         {
-            MoveCharacter();
-            wallSlide();
+            if (!isWallJumping)
+            {
+                MoveCharacter();
+                wallSlide();
+            }
         }
         else
         {
@@ -100,7 +110,11 @@ public class MovementController : MonoBehaviour
         
         if (Input.GetButtonDown("Jump"))
         {
-            if(isGrounded)
+            if (isWallSliding == true)
+            {
+                wallJump();
+            }
+            else if (isGrounded)
             {
                 AudioManager.instance.PlaySFX(5);
                 rb2D.velocity = new Vector2(rb2D.velocity.x, jumpForce);
@@ -109,6 +123,7 @@ public class MovementController : MonoBehaviour
             {
                 if(canDoubleJump)
                 {
+                    Debug.Log("double jumping");
                     AudioManager.instance.PlaySFX(5);
                     rb2D.velocity = new Vector2(rb2D.velocity.x, jumpForce);
                     canDoubleJump = false;
@@ -133,7 +148,11 @@ public class MovementController : MonoBehaviour
     {
         if (knockBackCounter <= 0)
         {
-            if (isWallSliding)
+            if (isWallJumping)
+            {
+                animator.SetInteger(animationState, (int)CharStates.jump);
+            }
+            else if (isWallSliding)
             {
                 animator.SetInteger(animationState, (int)CharStates.wallJump);
             }
@@ -141,7 +160,7 @@ public class MovementController : MonoBehaviour
             {
                 animator.SetInteger(animationState, (int)CharStates.doubleJump);
             }
-            else if (Mathf.Abs(movement.x) >= 0 && movement.y > 0.05 && isGrounded == false)
+            else if ((Mathf.Abs(movement.x) >= 0 && movement.y > 0.05 && isGrounded == false))
             {
                 animator.SetInteger(animationState, (int)CharStates.jump);
             }
@@ -201,7 +220,7 @@ public class MovementController : MonoBehaviour
     {
         if(isWalled() && !isGrounded && rb2D.velocity.x != 0.0f)
         {
-            Debug.Log("is wall sliding");
+           // Debug.Log("is wall sliding");
             isWallSliding = true;
             rb2D.velocity = new Vector2(rb2D.velocity.x, Mathf.Clamp(rb2D.velocity.y, -wallSlidingSpeed, float.MaxValue));
         }
@@ -209,4 +228,49 @@ public class MovementController : MonoBehaviour
             isWallSliding = false;
         }
     }
+
+    private void wallJump()
+    {
+        if (isWallSliding)
+        {
+            isWallJumping = false;
+            if (spriteRenderer.flipX)
+            {
+                wallJumpingDirection = 1;
+            }
+            else
+            {
+                wallJumpingDirection = -1;
+            }
+            wallJumpingCounter = wallJumpingTime;
+
+            CancelInvoke(nameof(stopWallJumping));
+        }
+        else
+        {
+            wallJumpingCounter -= Time.deltaTime;
+        }
+
+        if (Input.GetButtonDown("Jump") && wallJumpingCounter > 0.0f)
+        {
+            
+            isWallJumping = true;
+            //rb2D.velocity = new Vector2(rb2D.velocity.x, jumpForce);
+            //rb2D.velocity = new Vector2(wallJumpingDirection * rb2D.velocity.x, jumpForce);
+            rb2D.velocity = new Vector2(wallJumpingDirection * wallJumpingPower.x, wallJumpingPower.y);
+            canDoubleJump = true;
+            wallJumpingCounter = 0.0f;
+
+            Invoke(nameof(stopWallJumping), wallJumpingDuration);
+        }
+        //Debug.Log("End of walljump()");
+    }
+
+    private void stopWallJumping()
+    {
+        isWallJumping = false;
+    }
+    
+
+
 }
