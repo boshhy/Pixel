@@ -63,6 +63,7 @@ public class MovementController : MonoBehaviour
         animator = GetComponent<Animator>();
         rb2D = GetComponent<Rigidbody2D>();    
         spriteRenderer  = GetComponent<SpriteRenderer>();
+        CheckPointController.instance.SetSpawnPoint(transform.position);
     }
 
     // Update is called once per frame
@@ -107,7 +108,18 @@ public class MovementController : MonoBehaviour
         {
             canDoubleJump = true;
         }
-        
+        // used for slashing forward (broken: hits edge and bounces up)
+        // if (Input.GetButtonDown("x"))
+        // {
+        //     if (spriteRenderer.flipX == true)
+        //     {
+        //         rb2D.velocity = new Vector2(-jumpForce * 5, 0.0f);
+        //     }
+        //     else
+        //     {
+        //         rb2D.velocity = new Vector2(jumpForce * 5, rb2D.velocity.y);
+        //     }
+        // }
         if (Input.GetButtonDown("Jump"))
         {
             if (isWallSliding == true)
@@ -123,7 +135,6 @@ public class MovementController : MonoBehaviour
             {
                 if(canDoubleJump)
                 {
-                    Debug.Log("double jumping");
                     AudioManager.instance.PlaySFX(5);
                     rb2D.velocity = new Vector2(rb2D.velocity.x, jumpForce);
                     canDoubleJump = false;
