@@ -55,6 +55,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\AudioManager.cs" />
      <Compile Include="Assets\Scripts\BossController.cs" />
+     <Compile Include="Assets\Scripts\BossRunToPlayer.cs" />
      <Compile Include="Assets\Scripts\bullet.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\checkPoint.cs" />
