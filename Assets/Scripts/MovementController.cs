@@ -24,6 +24,8 @@ public class MovementController : MonoBehaviour
 
     private bool isWallSliding;
     private float wallSlidingSpeed = 2.0f;
+    private bool isKnockedLeft = false;
+    private bool isKnockedRight = false;
 
 
     private bool isWallJumping;
@@ -71,6 +73,8 @@ public class MovementController : MonoBehaviour
     {
         if (knockBackCounter <= 0)
         {
+            isKnockedLeft = false;
+            isKnockedRight = false;
             if (!isWallJumping)
             {
                 MoveCharacter();
@@ -80,7 +84,15 @@ public class MovementController : MonoBehaviour
         else
         {
             knockBackCounter -= Time.deltaTime;
-            if (!spriteRenderer.flipX)
+            if (isKnockedLeft)
+            {
+                rb2D.velocity = new Vector2(rb2D.velocity.x, rb2D.velocity.y);
+            }
+            else if (isKnockedRight)
+            {
+                rb2D.velocity = new Vector2(rb2D.velocity.x, rb2D.velocity.y);
+            }
+            else if (!spriteRenderer.flipX)
             {
                 rb2D.velocity = new Vector2(-knockBackForce, rb2D.velocity.y);
             }
@@ -194,6 +206,28 @@ public class MovementController : MonoBehaviour
     {
         rb2D.velocity = new Vector2(0f, knockBackForce);
         knockBackCounter = knockBackLength;
+
+        animator.SetInteger(animationState, (int)CharStates.hit);
+    }
+
+    public void KnockBackLeft()
+    {
+        Debug.Log("knock back to left-----------");
+        rb2D.AddForce(new Vector2(-2000.0f, 800.0f));
+        //rb2D.velocity = new Vector2(-100.0f, knockBackForce);
+        knockBackCounter = knockBackLength+0.1f;
+        isKnockedLeft = true;
+
+        animator.SetInteger(animationState, (int)CharStates.hit);
+    }
+
+    public void KnockBackRight()
+    {
+        Debug.Log("knock back to right xxxxxxxxxxx: " + rb2D.velocity.x);
+        rb2D.AddForce(new Vector2(2000.0f, 800.0f));
+        //rb2D.velocity = new Vector2(500.0f, knockBackForce);
+        knockBackCounter = knockBackLength+0.1f;
+        isKnockedRight = true;
 
         animator.SetInteger(animationState, (int)CharStates.hit);
     }

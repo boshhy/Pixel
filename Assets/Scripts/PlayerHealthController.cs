@@ -77,4 +77,57 @@ public class PlayerHealthController : MonoBehaviour
         UIController.instance.UpdateHealthDisplay();
 
     }
+    public void DealDamageLeft()
+    {
+        // knock the player back left
+        if(invincibleCounter <= 0)
+        {
+            AudioManager.instance.PlaySFX(3);
+            currentHealth--;
+
+            if (currentHealth <= 0)
+            {
+                currentHealth = 0;
+                //gameObject.SetActive(false);
+                Instantiate(killEffect, transform.position, transform.rotation);
+                LevelManager.instance.RespawnPlayer();
+            }
+            else
+            {
+                invincibleCounter = invincibleLength;
+                spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0.4f);
+
+                MovementController.instance.KnockBackLeft();
+            }
+            
+            UIController.instance.UpdateHealthDisplay();
+        }
+    }
+    
+    public void DealDamageRight()
+    {
+        // knock the player back right
+                if(invincibleCounter <= 0)
+        {
+            AudioManager.instance.PlaySFX(3);
+            currentHealth--;
+
+            if (currentHealth <= 0)
+            {
+                currentHealth = 0;
+                //gameObject.SetActive(false);
+                Instantiate(killEffect, transform.position, transform.rotation);
+                LevelManager.instance.RespawnPlayer();
+            }
+            else
+            {
+                invincibleCounter = invincibleLength;
+                spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, 0.4f);
+
+                MovementController.instance.KnockBackRight();
+            }
+            
+            UIController.instance.UpdateHealthDisplay();
+        }
+    }
 }

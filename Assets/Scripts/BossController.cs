@@ -36,6 +36,7 @@ public class BossController : MonoBehaviour
     public float trunkSpeed;
     public Transform pointA;
     public Transform pointB;
+    public LayerMask whatIsGround;
 
     public float maxMoveTime;
     public float maxWaitTime;
@@ -46,9 +47,12 @@ public class BossController : MonoBehaviour
     public bool movingLeft;
     public float runningRange;
     public float firingRange;
+    public Transform groundTouchCheck;
+    public float hurtCounter;
+    public float hurtLength;
 
-    // public float originalTimeForFiringBullet;
-    // private float timeForFiringBullet;
+    public float originalTimeForFiringBullet;
+    public float timeForFiringBullet;
     public GameObject bullet;
     public Transform firePoint;
     public Transform firePointB;
@@ -57,6 +61,9 @@ public class BossController : MonoBehaviour
     private Rigidbody2D rBody;
     private SpriteRenderer sRenderer;
     private Animator anim;
+    public bool isGrounded;
+
+    public float testJumpPower;
     // Start is called before the first frame update
     void Start()
     {
@@ -65,93 +72,112 @@ public class BossController : MonoBehaviour
         sRenderer = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         currentMoveTime = maxMoveTime;
-        // timeForFiringBullet = originalTimeForFiringBullet;
+        timeForFiringBullet = originalTimeForFiringBullet;
     }
 
     // Update is called once per frame
     void Update()
     {
         float distanceFromPlayer = Vector2.Distance(player.position, transform.position);
+        isGrounded = Physics2D.OverlapCircle(groundTouchCheck.position, 0.2f, whatIsGround);
         //Debug.Log("Trunk position: " + transform.position.x + " point A position: " + pointA.position.x + " point B position:" + pointB.position.x);
-        if (distanceFromPlayer < runningRange)
+        if (hurtCounter <= 0)
         {
-            // RUN
-            //anim.SetBool("isJumping", false);
-            anim.SetBool("isFiring", false);
-            anim.SetBool("isRunning", true);
-
-            if (movingLeft) 
+            if (isGrounded)
             {
-                //Debug.Log("should be running left");
-                sRenderer.flipX = false;
-                rBody.velocity = new Vector2(-trunkSpeed, rBody.velocity.y);
-                if(transform.position.x < pointA.position.x)
+                if (distanceFromPlayer < runningRange)
                 {
-                    Debug.Log("movingLeft = false");
-                    movingLeft = false;
+                    // RUN
+                    anim.SetBool("isHurt", false);
+                    anim.SetBool("isJumping", false);
+                    anim.SetBool("isFiring", false);
+                    anim.SetBool("isRunning", true);
+
+
+
+                    if (movingLeft) 
+                    {
+                        //Debug.Log("should be running left");
+                        sRenderer.flipX = false;
+                        rBody.velocity = new Vector2(-trunkSpeed, rBody.velocity.y);
+                        if(transform.position.x < pointA.position.x)
+                        {
+                            //Debug.Log("movingLeft = false");
+                            movingLeft = false;
+                        }
+                    }
+                    else
+                    {
+                        //Debug.Log("should be running right");
+                        sRenderer.flipX = true;
+                        rBody.velocity = new Vector2(trunkSpeed, rBody.velocity.y);
+                        if(transform.position.x > pointB.position.x)
+                        {
+                            movingLeft = true;
+                        }
+                    }
+
+                }
+                else if (distanceFromPlayer < firingRange)
+                {
+                    // Fire Bullet
+                    if (rBody.velocity.y == 0.0f){
+                    anim.SetBool("isHurt", false);
+                    anim.SetBool("isJumping", false);
+                    anim.SetBool("isRunning", false);
+                    anim.SetBool("isFiring", true);
+                    }
+
+                    timeForFiringBullet -= Time.deltaTime;
+                    if (timeForFiringBullet <= 0.0f)
+                    {
+                        anim.SetBool("isHurt", false);
+                        anim.SetBool("isRunning", false);
+                        anim.SetBool("isFiring", false);
+                        anim.SetBool("isJumping", true);
+                        rBody.AddForce(new Vector2(rBody.velocity.x, testJumpPower));
+                        timeForFiringBullet = originalTimeForFiringBullet;
+                    }
+                    else
+                    {
+                        if (player.position.x >= transform.position.x)
+                        {
+                            movingLeft = false;
+                            sRenderer.flipX = true;
+                        }
+                        else
+                        {
+                            movingLeft = true;
+                            sRenderer.flipX = false;
+                        }
+                        rBody.velocity = new Vector2(0.0f, rBody.velocity.y);
+                    }
+                }
+                else
+                {
+                    // Idle
+                    anim.SetBool("isHurt", false);
+                    anim.SetBool("isRunning", false);
+                    anim.SetBool("isFiring", false);
+                    anim.SetBool("isJumping", false);
+                    if (player.position.x >= transform.position.x)
+                    {
+                        movingLeft = false;
+                        sRenderer.flipX = true;
+                    }
+                    else
+                    {
+                        movingLeft = true;
+                        sRenderer.flipX = false;
+                    }          
+                    rBody.velocity = new Vector2(0.0f, rBody.velocity.y);
+
                 }
             }
-            else
-            {
-                //Debug.Log("should be running right");
-                sRenderer.flipX = true;
-                rBody.velocity = new Vector2(trunkSpeed, rBody.velocity.y);
-                if(transform.position.x > pointB.position.x)
-                {
-                    movingLeft = true;
-                }
-            }
-
         }
-        else if (distanceFromPlayer < firingRange)
-        {
-            // Fire Bullet
-            //anim.SetBool("isJumping", false);
-            anim.SetBool("isRunning", false);
-            anim.SetBool("isFiring", true);
-            //timeForFiringBullet -= Time.deltaTime;
-            // if (timeForFiringBullet <= 0.0f)
-            // {
-            //     anim.SetBool("isFiring", false);
-            //     anim.SetBool("isJumping", true);
-            //     timeForFiringBullet = originalTimeForFiringBullet;
-            // }
-            // else {
-            //     anim.SetBool("isJumping", false);
-            //     anim.SetBool("isFiring", true);
-            // }
-
-            if (player.position.x >= transform.position.x)
-            {
-                movingLeft = false;
-                sRenderer.flipX = true;
-            }
-            else
-            {
-                movingLeft = true;
-                sRenderer.flipX = false;
-            }
-            rBody.velocity = new Vector2(0.0f, rBody.velocity.y);
+        else{
+            hurtCounter -= Time.deltaTime;
         }
-        else
-        {
-            // Idle
-            anim.SetBool("isRunning", false);
-            anim.SetBool("isFiring", false);
-            //anim.SetBool("isJumping", false);
-            if (player.position.x >= transform.position.x)
-            {
-                movingLeft = false;
-                sRenderer.flipX = true;
-            }
-            else
-            {
-                movingLeft = true;
-                sRenderer.flipX = false;
-            }
-            rBody.velocity = new Vector2(0.0f, rBody.velocity.y);
-        }
-        
     }        
 
     private void OnDrawGizmos() {
@@ -175,6 +201,20 @@ public class BossController : MonoBehaviour
         }
         
     }
+
+    // private void OnTriggerEnter2D(Collider2D other) 
+    // {
+    //     if (other.tag == "Player")
+    //     {
+    //             anim.SetBool("isRunning", false);
+    //             anim.SetBool("isFiring", false);
+    //             anim.SetBool("isJumping", false);
+    //             anim.SetBool("isHurt", true);
+    //             hurtCounter = hurtLength;
+    //             MovementController.instance.killJump();
+                
+    //     }    
+    // }
 }
 
 

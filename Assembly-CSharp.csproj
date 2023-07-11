@@ -61,9 +61,12 @@
      <Compile Include="Assets\Scripts\checkPoint.cs" />
      <Compile Include="Assets\Scripts\CheckPointController.cs" />
      <Compile Include="Assets\Scripts\DamagePlayer.cs" />
+     <Compile Include="Assets\Scripts\DamagePlayerLeft.cs" />
+     <Compile Include="Assets\Scripts\DamagePlayerRight.cs" />
      <Compile Include="Assets\Scripts\DamagePlayerWithRino.cs" />
      <Compile Include="Assets\Scripts\DestroyOverTime.cs" />
      <Compile Include="Assets\Scripts\HitBox.cs" />
+     <Compile Include="Assets\Scripts\hurtBoss.cs" />
      <Compile Include="Assets\Scripts\itemPlatform.cs" />
      <Compile Include="Assets\Scripts\KillPlayer.cs" />
      <Compile Include="Assets\Scripts\LevelManager.cs" />
