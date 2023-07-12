@@ -4620,6 +4620,7 @@ GameObject:
   - component: {fileID: 1214334125}
   - component: {fileID: 1214334126}
   - component: {fileID: 1214334127}
+  - component: {fileID: 1214334128}
   m_Layer: 0
   m_Name: Boss Enemy Trunk
   m_TagString: Untagged
@@ -4821,6 +4822,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9388237, y: 0.20201802}
   m_EdgeRadius: 0
+--- !u!114 &1214334128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214334120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b329c2f2aaa566428088740ff77bb41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 6
+  maxHealth: 6
+  invincibleLength: 0.5
+  invincibleCounter: 0
+  killEffect: {fileID: 7963281790170477090, guid: 091efc08354a5694cad9d1875a67c9c3,
+    type: 3}
 --- !u!1 &1272395809
 GameObject:
   m_ObjectHideFlags: 0

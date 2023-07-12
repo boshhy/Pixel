@@ -29,6 +29,7 @@ public class hurtBoss : MonoBehaviour
                 GetComponentInParent<BossController>().hurtCounter = GetComponentInParent<BossController>().hurtLength;
                 //hurtCounter = hurtLength;
                 MovementController.instance.killJump();
+                BossHealthController.instance.DealDamage();
                 
         }    
     }

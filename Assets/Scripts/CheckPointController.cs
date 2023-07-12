@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,7 +20,7 @@ public class CheckPointController : MonoBehaviour
         checkpoints = FindObjectsOfType<checkPoint>();
 
         spawnPoint = MovementController.instance.transform.position;
-        Debug.Log("spawnpoint is: " + spawnPoint);
+        //Debug.Log("spawnpoint is: " + spawnPoint);
     }
 
     // Update is called once per frame
