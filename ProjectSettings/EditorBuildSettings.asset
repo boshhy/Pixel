@@ -4,5 +4,38 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/StartOfGame.unity
+    guid: e2c89608b0345164cb085909d4e1a3a1
+  - enabled: 1
+    path: Assets/Scenes/Level 001.unity
+    guid: 2202c605f6772c14292029b464f82fe6
+  - enabled: 1
+    path: Assets/Scenes/Level 002.unity
+    guid: 62a183f9790ed0f458ff242c39f97bc3
+  - enabled: 1
+    path: Assets/Scenes/Level 003.unity
+    guid: 899242dd04338e949a768f3d4bde53d2
+  - enabled: 1
+    path: Assets/Scenes/Level 004.unity
+    guid: e9c4306bbcb733b459008a4a12964155
+  - enabled: 1
+    path: Assets/Scenes/Level 005.unity
+    guid: 068ac8b98cb5803419feb6598838cc69
+  - enabled: 1
+    path: Assets/Scenes/Level 006.unity
+    guid: 7f71ed1652c999d4ba84c5e353980dc9
+  - enabled: 1
+    path: Assets/Scenes/Level 007.unity
+    guid: 7aa52bf43e1867745a614a9a2ec7c709
+  - enabled: 1
+    path: Assets/Scenes/Level 008.unity
+    guid: 3d601c91ee0604b4b832710a0185a782
+  - enabled: 1
+    path: Assets/Scenes/Level 009.unity
+    guid: d8a54b4fe87d05b48a58809e44b9a1b8
+  - enabled: 1
+    path: Assets/Scenes/EndCredits.unity
+    guid: e2f75a5c52362ea4aa1293c027a2af36
   m_configObjects: {}
