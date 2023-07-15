@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 43ac4cebc0b3b284b8440868783c82fc
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - doorOpen: {instanceID: 0}
+  - theClosedDoor: {instanceID: 0}
+  - collectEffect: {fileID: 3781952553879119580, guid: 337a4d8fa6df51b4ca4431d25654af40,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
