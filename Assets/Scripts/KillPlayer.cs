@@ -24,6 +24,7 @@ public class KillPlayer : MonoBehaviour
             Vector3 playerPosition = other.transform.position;
             playerPosition.y += 1.5f;
             Instantiate(explosionEffect, playerPosition, other.transform.rotation);
+            AudioManager.instance.PlaySFX(14);
             LevelManager.instance.RespawnPlayer();
         }
     }
