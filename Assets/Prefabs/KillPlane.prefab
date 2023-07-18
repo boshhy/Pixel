@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 393238467615369357}
   - component: {fileID: 393238467615369359}
   m_Layer: 0
-  m_Name: KillPlane 1
+  m_Name: KillPlane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 393238467615369356}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -120, z: -10}
+  m_LocalPosition: {x: 0, y: -16, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -70,3 +70,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 797838fc9885b50499390117d313fa63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionEffect: {fileID: 5186489865389634207, guid: fc855de6fe593044082f4bf7ee68926a,
+    type: 3}

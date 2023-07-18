@@ -10,6 +10,10 @@ public class LevelManager : MonoBehaviour
 
     public int strawberriesCollected;
 
+    private Vector3 spawnPointForCamera;
+
+    public Camera theCamera;
+
     private void Awake()
     {
         instance = this;
@@ -39,7 +43,13 @@ public class LevelManager : MonoBehaviour
 
         MovementController.instance.gameObject.SetActive(true);
 
+
         MovementController.instance.transform.position = CheckPointController.instance.spawnPoint;
+
+        spawnPointForCamera = CheckPointController.instance.spawnPoint;
+        spawnPointForCamera.z = -10f;
+        spawnPointForCamera.y = 1f;
+        theCamera.GetComponent<CameraController>().FixGlitch(spawnPointForCamera.x, spawnPointForCamera.y, spawnPointForCamera.z);
 
         PlayerHealthController.instance.currentHealth = PlayerHealthController.instance.maxHealth;
 

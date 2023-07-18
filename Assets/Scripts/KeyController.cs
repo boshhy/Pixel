@@ -23,6 +23,7 @@ public class KeyController : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            AudioManager.instance.PlaySFX(10);
             theClosedDoor.GetComponent<DoorController>().PlayerHasKey = true;
             Destroy(gameObject);
             Instantiate(collectEffect, gameObject.transform.position, gameObject.transform.rotation);

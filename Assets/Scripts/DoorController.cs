@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
 
 
 public class DoorController : MonoBehaviour
 {
+    public GameObject LevelTransition;
     public bool PlayerHasKey = false;
     public bool isDoorOpen = false;
     public bool playerInDoorway = false;
@@ -23,7 +24,9 @@ public class DoorController : MonoBehaviour
         if (Input.GetButtonDown("up") && playerInDoorway && isDoorOpen)
         {
             Debug.Log("Player should enter door now.");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            // call the next level
+            AudioManager.instance.PlaySFX(9);
+            LevelTransition.GetComponent<LevelLoader>().LoadNextLevel();
         }
     }
 

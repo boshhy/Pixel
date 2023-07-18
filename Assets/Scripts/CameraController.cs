@@ -27,4 +27,11 @@ public class CameraController : MonoBehaviour
                                          Mathf.Clamp(target.position.y, minHeight, maxHeight) + offset, 
                                          transform.position.z);
     }
+
+    public void FixGlitch(float incomingX, float incomingY, float incomingZ)
+    {
+        transform.position = new Vector3(Mathf.Clamp(incomingX, minHorizontal, maxHorizontal),
+                                         incomingY, 
+                                         incomingZ);
+    }
 }

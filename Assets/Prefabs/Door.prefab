@@ -119,6 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69296834105d12245909b83f26210c6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LevelTransition: {fileID: 3551207833757510864, guid: 393d40c4a0cd20c4684d6f0e0243310a,
+    type: 3}
   PlayerHasKey: 0
   isDoorOpen: 0
   playerInDoorway: 0

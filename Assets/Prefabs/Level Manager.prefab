@@ -45,3 +45,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waitToRespawn: 1
   strawberriesCollected: 0
+  theCamera: {fileID: 0}

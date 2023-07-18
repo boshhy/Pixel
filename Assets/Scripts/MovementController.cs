@@ -302,6 +302,7 @@ public class MovementController : MonoBehaviour
             isWallJumping = true;
             //rb2D.velocity = new Vector2(rb2D.velocity.x, jumpForce);
             //rb2D.velocity = new Vector2(wallJumpingDirection * rb2D.velocity.x, jumpForce);
+            AudioManager.instance.PlaySFX(11);
             rb2D.velocity = new Vector2(wallJumpingDirection * wallJumpingPower.x, wallJumpingPower.y);
             canDoubleJump = true;
             wallJumpingCounter = 0.0f;
