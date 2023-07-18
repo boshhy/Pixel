@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossHealthController : MonoBehaviour
 {
     public static BossHealthController instance;
-
+    public GameObject LevelTransition;
     public int currentHealth, maxHealth;
     public float invincibleLength;
     public float invincibleCounter;
@@ -33,10 +33,17 @@ public class BossHealthController : MonoBehaviour
 
     public void DealDamage()
     {
-        Debug.Log("Deal damage to player");
+        Debug.Log("Deal damage to boss");
         if(invincibleCounter <= 0)
         {
-            AudioManager.instance.PlaySFX(3);
+            if (currentHealth >= 2)
+            {
+                AudioManager.instance.PlaySFX(4);
+            }
+            else 
+            {
+                AudioManager.instance.PlaySFX(16);
+            }
             currentHealth--;
 
             if (currentHealth <= 0)
@@ -45,6 +52,7 @@ public class BossHealthController : MonoBehaviour
                 Instantiate(killEffect, transform.position, transform.rotation);
                 Destroy(gameObject);
                 // END GAME
+                LevelTransition.GetComponent<LevelLoader>().LoadNextLevel();
             }
             else
             {

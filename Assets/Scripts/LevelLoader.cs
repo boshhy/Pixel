@@ -13,6 +13,16 @@ public class LevelLoader : MonoBehaviour
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
+    public void LoadGameAgain()
+    {
+        StartCoroutine(LoadLevel(0));
+    }
+
+    public void BackToMenu()
+    {
+        StartCoroutine(LoadLevel(0));
+    }
+
     IEnumerator LoadLevel(int levelIndex)
     {
         
@@ -20,7 +30,10 @@ public class LevelLoader : MonoBehaviour
         
         yield return new WaitForSeconds(transitionTime);
 
+
         SceneManager.LoadScene(levelIndex);
         
     }
+
+
 }

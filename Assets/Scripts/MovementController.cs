@@ -71,38 +71,40 @@ public class MovementController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (knockBackCounter <= 0)
+        if (!PauseMenu.isPaused)
         {
-            isKnockedLeft = false;
-            isKnockedRight = false;
-            if (!isWallJumping)
+            if (knockBackCounter <= 0)
             {
-                MoveCharacter();
-                wallSlide();
-            }
-        }
-        else
-        {
-            knockBackCounter -= Time.deltaTime;
-            if (isKnockedLeft)
-            {
-                rb2D.velocity = new Vector2(rb2D.velocity.x, rb2D.velocity.y);
-            }
-            else if (isKnockedRight)
-            {
-                rb2D.velocity = new Vector2(rb2D.velocity.x, rb2D.velocity.y);
-            }
-            else if (!spriteRenderer.flipX)
-            {
-                rb2D.velocity = new Vector2(-knockBackForce, rb2D.velocity.y);
+                isKnockedLeft = false;
+                isKnockedRight = false;
+                if (!isWallJumping)
+                {
+                    MoveCharacter();
+                    wallSlide();
+                }
             }
             else
             {
-                rb2D.velocity = new Vector2(knockBackForce, rb2D.velocity.y);
+                knockBackCounter -= Time.deltaTime;
+                if (isKnockedLeft)
+                {
+                    rb2D.velocity = new Vector2(rb2D.velocity.x, rb2D.velocity.y);
+                }
+                else if (isKnockedRight)
+                {
+                    rb2D.velocity = new Vector2(rb2D.velocity.x, rb2D.velocity.y);
+                }
+                else if (!spriteRenderer.flipX)
+                {
+                    rb2D.velocity = new Vector2(-knockBackForce, rb2D.velocity.y);
+                }
+                else
+                {
+                    rb2D.velocity = new Vector2(knockBackForce, rb2D.velocity.y);
+                }
             }
+            UpdateState();
         }
-        UpdateState();
-        
     }
 
     void FixedUpdate()

@@ -231,6 +231,7 @@ df434544c9f7b33d1cc7e635b180d279 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 afc5b93a7b192de2dcb3832fe35a5c7e Assembly-CSharp.dll:.bullet
 8649814970b42d345b89944b862453cc Unity.TextMeshPro.dll:TMPro.TMP_SubMesh
 b6e87f192398fa53aac184ffdef159bc Assembly-CSharp.dll:.Pickup
-141b2e6b79a6cc179075ac871d122720 Assembly-CSharp.dll:.BossHealthController
+1e371dc4c3e5cef42e8dcc7141ebbb25 Assembly-CSharp.dll:.BossHealthController
 40a6ff7f4dc43bf2b93fa4a4c1c8c32f Assembly-CSharp.dll:.MainMenu
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.DamagePlayerWithRino
+8b2ce8cce6bf51c726d816c56ba256d4 Assembly-CSharp.dll:.PauseMenu

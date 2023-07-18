@@ -4,34 +4,6 @@ using UnityEngine;
 
 public class BossController : MonoBehaviour
 {
-//     public float trunkSpeed;
-//     public float runningRange;
-//     private Transform player;
-//     private Rigidbody2D rBody;
-
-//     private void Start() 
-//     {
-//         rBody = GetComponent<Rigidbody2D>();
-//         player = GameObject.FindGameObjectWithTag("Player").transform;
-//     }
-
-//     private void Update() 
-//     {
-//         float distanceFromPlayer = Vector2.Distance(player.position, transform.position);
-//         if (distanceFromPlayer < runningRange)
-//         {
-//             rBody.velocity = new Vector2(-trunkSpeed, rBody.velocity.y);
-//             // transform.position = Vector2.MoveTowards(this.transform.position, player.position, speed * Time.deltaTime); 
-//         }
-//     }
-
-//     void OnDrawGizmosSelected()
-//     {
-//         Gizmos.color = Color.green;
-//         Gizmos.DrawWireSphere(transform.position, runningRange);
-//     }
-// }
-
     public int trunkHealth;
     public float trunkSpeed;
     public Transform pointA;
@@ -201,20 +173,6 @@ public class BossController : MonoBehaviour
         }
         
     }
-
-    // private void OnTriggerEnter2D(Collider2D other) 
-    // {
-    //     if (other.tag == "Player")
-    //     {
-    //             anim.SetBool("isRunning", false);
-    //             anim.SetBool("isFiring", false);
-    //             anim.SetBool("isJumping", false);
-    //             anim.SetBool("isHurt", true);
-    //             hurtCounter = hurtLength;
-    //             MovementController.instance.killJump();
-                
-    //     }    
-    // }
 }
 
 

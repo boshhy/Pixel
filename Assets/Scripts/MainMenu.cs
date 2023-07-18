@@ -21,4 +21,13 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
+    public void PlayAgain()
+    {
+        LevelTransition.GetComponent<LevelLoader>().LoadGameAgain();
+    }
+
+    public void BackToMenu()
+    {
+        LevelTransition.GetComponent<LevelLoader>().BackToMenu();
+    }
 }
