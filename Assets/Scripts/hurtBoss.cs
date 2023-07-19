@@ -21,7 +21,7 @@ public class hurtBoss : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-                Debug.Log("should hurt trunk");
+                //("should hurt trunk");
                 anim.SetBool("isRunning", false);
                 anim.SetBool("isFiring", false);
                 anim.SetBool("isJumping", false);

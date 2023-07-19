@@ -225,7 +225,7 @@ public class MovementController : MonoBehaviour
 
     public void KnockBackRight()
     {
-        Debug.Log("knock back to right xxxxxxxxxxx: " + rb2D.velocity.x);
+        //Debug.Log("knock back to right xxxxxxxxxxx: " + rb2D.velocity.x);
         rb2D.AddForce(new Vector2(2000.0f, 800.0f));
         //rb2D.velocity = new Vector2(500.0f, knockBackForce);
         knockBackCounter = knockBackLength+0.1f;

@@ -33,7 +33,7 @@ public class BossHealthController : MonoBehaviour
 
     public void DealDamage()
     {
-        Debug.Log("Deal damage to boss");
+        //Debug.Log("Deal damage to boss");
         if(invincibleCounter <= 0)
         {
             if (currentHealth >= 2)

@@ -23,7 +23,7 @@ public class DoorController : MonoBehaviour
     {
         if (Input.GetButtonDown("up") && playerInDoorway && isDoorOpen)
         {
-            Debug.Log("Player should enter door now.");
+            //Debug.Log("Player should enter door now.");
             // call the next level
             AudioManager.instance.PlaySFX(9);
             LevelTransition.GetComponent<LevelLoader>().LoadNextLevel();
