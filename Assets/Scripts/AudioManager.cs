@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Used to manage the audio, this can be called with an index to
+// play a specified sound
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
@@ -9,7 +11,9 @@ public class AudioManager : MonoBehaviour
     public AudioSource[] SFX;
 
     void Awake()
-    {
+    {   
+        // If this instance doesnt already exist, create it
+        // otherwise destroy the game object calling Awake
         if (instance ==  null)
         {
             instance = this;
@@ -21,6 +25,7 @@ public class AudioManager : MonoBehaviour
         }
 
     }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +38,8 @@ public class AudioManager : MonoBehaviour
         
     }
 
+    // Takes in an int and stops the sound effect if it already playing
+    // then it plays the sound effect linked to that int.
     public void PlaySFX(int sfx)
     {
         SFX[sfx].Stop();
