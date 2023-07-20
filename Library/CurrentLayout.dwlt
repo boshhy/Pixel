@@ -21,7 +21,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 548}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
@@ -46,7 +46,7 @@ MonoBehaviour:
     y: 0
     width: 1920
     height: 1037
-  m_MinSize: {x: 950, y: 548}
+  m_MinSize: {x: 950, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &3
 MonoBehaviour:
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_MinSize: {x: 927, y: 498}
   m_MaxSize: {x: 28012, y: 14048}
   vertical: 0
-  controlID: 85
+  controlID: 242
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_MinSize: {x: 650, y: 498}
   m_MaxSize: {x: 24010, y: 14048}
   vertical: 1
-  controlID: 86
+  controlID: 195
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -272,7 +272,7 @@ MonoBehaviour:
   m_MinSize: {x: 570, y: 274}
   m_MaxSize: {x: 24010, y: 10024}
   vertical: 0
-  controlID: 123
+  controlID: 196
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -807,9 +807,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: a66effff0a71ffff5a73ffffd273ffffee73ffff1274ffff1a74ffff0276ffff9677ffff1a79ffff747affff7a7cffffb87dffffe27effff0c80ffff4481ffff8c82fffff283ffff1c85ffff4686ffff7087ffff8688ffffa689ffffce89ffff5c8cffff848effff5a90ffff9692ffff3494ffffc295ffff2697ffff3699ffff7e9affffb29bffffea9cffffaa9dffffc69dffff549fffffa6a1ffff8aa3ffff1ca5ffff9ca6fffff2a7fffff8a9ffff32abffff58acffff7eadffffb4aefffffaafffff60b1ffff86b2ffffacb3ffffd2b4ffffe6b5fffff0b5ffff16b6ffffb4c8ffff42f9ffffc6f9ffffdefbffffa6380000e8380000925100009c510000ba5100001898000060980000
+      m_SelectedIDs: e8380000
+      m_LastClickedID: 14568
+      m_ExpandedIDs: 06faffffbefbffff7e380000a6380000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -861,7 +861,7 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 39036
+  m_LastSelectedObjectID: 14568
 --- !u!114 &23
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -900,20 +900,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Audio/Music
+    - Assets/Scenes
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Audio/Music
+  - Assets/Scenes
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\User\Visual Studio Code Projects\Pixel
   m_LockTracker:
     m_IsLocked: 1
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 30140000
-    m_LastClickedID: 5168
-    m_ExpandedIDs: 000000004c0a0000020b0000fe0d00000410000012100000d61000001e120000f41400006815000000ca9a3b
+    m_SelectedIDs: d2270000
+    m_LastClickedID: 10194
+    m_ExpandedIDs: 0000000018270000ce2700006c290000d02c0000a22d0000c03100003632000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -941,7 +941,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000004c0a0000020b0000fe0d00000410000012100000d61000001e120000f414000068150000
+    m_ExpandedIDs: 0000000018270000ce2700006c290000d02c0000a22d0000c031000036320000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -972,18 +972,18 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: 
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: bgm01
-      m_OriginalName: bgm01
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 4164
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 13}
     m_CreateAssetUtility:
@@ -1034,20 +1034,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Prefabs/Effects
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Prefabs/Effects
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\User\Visual Studio Code Projects\Pixel
   m_LockTracker:
     m_IsLocked: 1
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 060b0000
-    m_LastClickedID: 2822
-    m_ExpandedIDs: 000000004c0a0000020b000004100000d6100000f41400006815000000ca9a3b
+    m_SelectedIDs: 30350000
+    m_LastClickedID: 13616
+    m_ExpandedIDs: 0000000018270000ce2700006c290000d02c0000a22d0000c03100003632000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1075,7 +1075,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: de0d0000
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000004c0a0000020b0000fe0d00000410000012100000d61000001e120000f414000068150000
+    m_ExpandedIDs: 0000000018270000ce2700006c290000d02c0000a22d0000c031000036320000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1102,7 +1102,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c6230000840c0000be0f0000e20c000064e800001ee80000fce7000000e800006a0d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0

@@ -6,6 +6,7 @@ using UnityEngine;
 // play a specified sound
 public class AudioManager : MonoBehaviour
 {
+    // Used to reference this one and only instance 
     public static AudioManager instance;
 
     public AudioSource[] SFX;
