@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-// Used to control the Canvas drawing the hearts
+// Used to control the Canvas drawing the hearts for the palyer
 public class UIController : MonoBehaviour
 {
     // Used to reference this one and only instance 

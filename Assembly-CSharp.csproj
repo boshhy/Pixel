@@ -56,6 +56,7 @@
      <Compile Include="Assets\Scripts\AudioManager.cs" />
      <Compile Include="Assets\Scripts\BossController.cs" />
      <Compile Include="Assets\Scripts\BossHealthController.cs" />
+     <Compile Include="Assets\Scripts\BossUIController.cs" />
      <Compile Include="Assets\Scripts\bullet.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\checkPoint.cs" />
@@ -80,7 +81,6 @@
      <Compile Include="Assets\Scripts\PigController.cs" />
      <Compile Include="Assets\Scripts\PlayerHealthController.cs" />
      <Compile Include="Assets\Scripts\RinoController.cs" />
-     <Compile Include="Assets\Scripts\RinoHealthController.cs" />
      <Compile Include="Assets\Scripts\Trampoline.cs" />
      <Compile Include="Assets\Scripts\UIController.cs" />
      <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />

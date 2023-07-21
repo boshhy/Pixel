@@ -72,5 +72,6 @@ public class BossHealthController : MonoBehaviour
                 invincibleCounter = invincibleLength;
             }
         }
+        BossUIController.instance.UpdateHealthDisplay();
     }
 }
