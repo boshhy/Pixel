@@ -73,7 +73,7 @@ public class itemPlatform : MonoBehaviour
         else
         {
             // If platform not at starting position move it to starting position
-            if (startingPoint != transform.position.y)
+            if (startingPoint > transform.position.y + 0.1 || startingPoint < transform.position.y - 0.1)
             {
                 if (transform.position.y < startingPoint)
                 {
