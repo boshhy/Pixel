@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Used to control the movements of the 'Trunk' boss
-
 public class BossController : MonoBehaviour
 {
     // Used to keep track of health
