@@ -4,6 +4,9 @@
 ## CS50G's Project: Final
 Create a full game from scratch using either LÖVE or Unity.
 
+## Video Link
+https://www.youtube.com/watch?v=jnZWjD8w78c
+
 ## Distinctiveness and Complexity
 This project is a 2D platformer implemented in C# and created using Unity. Four main parts make up the game, a main menu (the start of the game), levels to play, a pause menu(used when the player hits 'ESC' key), and an end credits scene. The game consists of a character named Pixel that the player must control using the arrow keys to move left and right. The main goal of the game is to make it to the end of each level and proceed until you defeat a boss on the last level. The spacebar key can be pressed to make Pixel jump. The spacebar can also be pressed to make the Pixel jump in the air; this is limited to only one jump while in the air. There are walls and ground that Pixel can use to wall slide. Pixel can jump from the wall and be allowed to jump again. Pixel can die by enemies, spikes, or falling of the ledge. Pixel consists of a hit box on his feet to be used as a trigger against enemies to kill them.
     
